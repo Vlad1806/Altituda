@@ -1,0 +1,191 @@
+{
+    "products": [{
+            "id": 6,
+            "title": "Арматура 10мм",
+            "image": "./images/armatura.webp",
+            "price": 45,
+            "category": "Арматура"
+        },
+
+        {
+            "id": 3,
+            "title": "Арматура 8мм",
+            "image": "./images/armatura.webp",
+            "price": 45,
+            "category": "Арматура"
+        },
+        {
+            "id": 4,
+            "title": "ДСП 3500х1750х16мм",
+            "image": "./images/dsp_simple2.webp",
+            "price": 850,
+            "category": "ДСП"
+        },
+        {
+            "id": 8,
+            "title": "ДСП 3500х1750х20мм",
+            "image": "./images/dsp_simple2.webp",
+            "price": 950,
+            "category": "ДСП"
+        },
+        {
+            "id": 5,
+            "title": "ДВП 2440х1220х2,5мм",
+            "image": "./images/dvp2.jpg",
+            "price": 250,
+            "category": "ДВП"
+        },
+
+        {
+            "id": 7,
+            "title": "ДВП 2440х1220х3мм",
+            "image": "./images/Dvp.webp",
+            "price": 350,
+            "category": "ДВП"
+        },
+
+
+        {
+            "id": 10,
+            "title": "ОСБ 2500х1250х8мм",
+            "image": "./images/osb.webp",
+            "price": 685,
+            "category": "ОСБ"
+        },
+        {
+            "id": 11,
+            "title": "ОСБ 2500х1250х10мм",
+            "image": "./images/osb.webp",
+            "price": 785,
+            "category": "ОСБ"
+        },
+        {
+            "id": 13,
+            "title": "Фанера 1525х1250х4мм",
+            "image": "./images/Fanara-1.webp",
+            "price": 100,
+            "category": "Фанера"
+        },
+        {
+            "id": 12,
+            "title": "ОСБ 2500х1250х12мм",
+            "image": "./images/osb.webp",
+            "price": 885,
+            "category": "ОСБ"
+        },
+
+        {
+            "id": 14,
+            "title": "Фанера 1525х1250х8мм",
+            "image": "./images/Fanara-1.webp",
+            "price": 200,
+            "category": "Фанера"
+        },
+        {
+            "id": 9,
+            "title": "Фанера 1525х1250х10мм",
+            "image": "./images/Fanara-1.webp",
+            "price": 400,
+            "category": "Фанера"
+        },
+        {
+            "id": 15,
+            "title": "Фанера 1525х1250х12мм",
+            "image": "./images/Fanara-1.webp",
+            "price": 100,
+            "category": "Фанера"
+        },
+        {
+            "id": 16,
+            "title": "Профильная труба 2х15х15",
+            "image": "./images/prof_truba3.webp",
+            "price": 40,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 17,
+            "title": "Профильная труба 2х25х25",
+            "image": "./images/prof_truba3.webp",
+            "price": 45,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 2,
+            "title": "Профильная труба 2х35х35",
+            "image": "./images/prof_truba3.webp",
+            "price": 55,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 18,
+            "title": "Профильная труба 3х25х25",
+            "image": "./images/prof_truba3.webp",
+            "price": 65,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 20,
+            "title": "Профильная труба 3х35х35",
+            "image": "./images/prof_truba3.webp",
+            "price": 70,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 19,
+            "title": "Профильная труба 4х20х20",
+            "image": "./images/prof_truba2.webp",
+            "price": 75,
+            "category": "Профильная труба"
+        },
+        {
+            "id": 1,
+            "title": "Уголок металлический 3х35",
+            "image": "./images/ygolok.webp",
+            "price": 25,
+            "category": "Уголок"
+        },
+        {
+            "id": 24,
+            "title": "Уголок металлический 3х32",
+            "image": "./images/ygolok.webp",
+            "price": 22,
+            "category": "Уголок"
+        },
+        {
+            "id": 21,
+            "title": "Уголок металлический 4х20",
+            "image": "./images/ygolok.webp",
+            "price": 30,
+            "category": "Уголок"
+        },
+
+        {
+            "id": 25,
+            "title": "Уголок металлический 4х25",
+            "image": "./images/ygolok.webp",
+            "price": 35,
+            "category": "Уголок"
+        },
+        {
+            "id": 22,
+            "title": "Уголок металлический 3х30",
+            "image": "./images/ygolok.webp",
+            "price": 33,
+            "category": "Уголок"
+        },
+        {
+            "id": 23,
+            "title": "Уголок металлический 5х50",
+            "image": "./images/ygolok.webp",
+            "price": 70,
+            "category": "Уголок"
+        },
+        {
+            "id": 26,
+            "title": "Профнастил ПС-20 ",
+            "image": "./images/profnastil_simple2.jpg",
+            "price": 70,
+            "category": "Профнастил"
+        }
+    ]
+}

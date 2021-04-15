@@ -1,0 +1,107 @@
+.content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+
+  max-width: 1024px;
+  margin: 150px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.content h3{
+  color:#4e4e4a;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.content p{
+  color:#2e2e2d;
+}
+.content div{
+  color:#2e2e2d;
+  margin-bottom: 2rem;
+}
+.contacts span svg{
+  width: 2.3rem;
+  height: 2.3rem;
+  fill: #e7e547;
+}
+.content .map {
+  z-index: 2;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 3px 25px 0px #3f3f3f;
+          box-shadow: 0px 3px 25px 0px #3f3f3f;
+}
+iframe{
+  width: 500px;
+  height: 100%;
+}
+.content .map .frame {
+  border-radius: 10px;
+width: 100%;
+height: 100%;
+}
+
+.about__company-title {
+  margin: 0;
+  z-index: 2;
+}
+
+.description__us {
+  max-width: 60%;
+  padding: 0 5%;
+}
+
+.description__address-location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3px;
+}
+
+.description__address p {
+  margin-left: 20px;
+  color: #6e6e6e;
+}
+
+.description__address svg {
+  width: 27px;
+  height: 27px;
+  color: #e7e547;
+}
+/*# sourceMappingURL=aboutUs.css.map */
+
+@media only screen and (max-width: 567px) {
+  
+  .content{
+    display: block;
+    justify-content: center;
+  }
+  .description__us p{
+   padding: 5px;
+   width: 100vw;
+   border: 1px solid;
+  }
+  map{
+display: none;
+  }
+  iframe{
+    width: 100vw;
+    height: 100vh;
+  }
+  .contacts{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items:baseline;
+    border: 1px solid;
+  }
+}
