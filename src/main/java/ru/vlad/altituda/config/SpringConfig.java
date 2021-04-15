@@ -29,7 +29,7 @@ public class SpringConfig implements WebMvcConfigurer {
         ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
         thymeleafViewResolver.setTemplateEngine(templateEngine());
         thymeleafViewResolver.setCharacterEncoding("UTF-8");
-        thymeleafViewResolver.setContentType("text/html; charset=UTF-8)");
+        thymeleafViewResolver.setContentType("text/html; charset=UTF-8");
         return thymeleafViewResolver;
     }
 
@@ -64,7 +64,7 @@ public class SpringConfig implements WebMvcConfigurer {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         resolver.setCharacterEncoding("UTF-8");
-        resolver.setContentType("text/html; charset=UTF-8)");
+        resolver.setContentType("text/html; charset=UTF-8");
         registry.viewResolver(resolver);
     }
 }
