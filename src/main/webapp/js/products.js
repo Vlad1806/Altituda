@@ -1,6 +1,6 @@
 const getProducts = async () => {
   try {
-    const results = await fetch("${pageContext.request.contextPath}/data/product.json");
+    const results = await fetch("../../data/product.json");
     const data = await results.json();
     const products = data.products;
     return products;

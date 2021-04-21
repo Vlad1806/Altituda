@@ -55,6 +55,9 @@
                                 <td th:text="${person.age}"></td>
                                 <td th:text="${person.email}"></td>
                                 <td>
+<!--                                    <form th:method="POST" th:action="@{/people/{id}/edit(id=${person.getId()})}">-->
+<!--                                        <input type="submit" value="Edit"/>-->
+<!--                                    </form>-->
                                     <a th:href="@{/people/{id}/edit(id=${person.getId()})}" class="btn btn-primary">
                                         <i class="fas fa-user-edit ml-2"></i>
                                     </a>
@@ -63,7 +66,7 @@
 <!--                                    </a> from another project-->
                                 </td>
                                 <td>
-                                    <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+                                    <form th:method="POST" th:action="@{/people/{id}/delete(id=${person.getId()})}">
                                         <input type="submit" value="Delete"/>
                                     </form>
 <!--                                    <a th:href="@{/people/{id}(id=${person.getId()})}" class="btn btn-primary">-->

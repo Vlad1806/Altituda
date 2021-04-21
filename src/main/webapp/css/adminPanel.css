@@ -195,9 +195,15 @@ a {
 
 .user__actions{
   display: flex;
-  padding: 1.5rem;
-  margin-bottom: 3rem;
+  /*padding: 1.5rem;*/
+  margin-bottom: 2rem;
 }
+.user__actions a{
+  background: rgb(40, 184, 83);
+  /*padding: .5rem .5rem;*/
+  cursor: pointer;
+}
+
 .user__actions div{
   display: flex;
   align-items:center;
@@ -243,12 +249,14 @@ tbody tr td img{
   height: 100px;
 }
 td,th{
-  padding: .5rem;
+  padding: .5rem .2rem;
   border-color: #e9e9e9;
   border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+  text-align: center;
 }
 th{
-text-align: left;
+text-align: center;
 font-weight: bold;
 border-bottom: 2px solid #ddd;
 }
@@ -268,11 +276,20 @@ color:#FFC737;
 
 
 .product__description{
-  width: 500px;
+  width: 300px !important;
+  position: absolute;
+  overflow-x: scroll;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
 }
-
-
-
+table{
+  table-layout: auto;
+  width: 100%;
+}
+.w{
+  width: 200px;
+}
 
 
 
@@ -373,11 +390,18 @@ color:#FFC737;
   text-decoration: none;
   cursor: pointer;
 }
-.user__actions-serch button{
-  padding: .5rem 1rem;
-  margin-left: 2rem;
+/*.user__actions-serch a{*/
+/*  padding: .5rem 1rem;*/
+/*  margin-left: 2rem;*/
+/*  cursor: pointer;*/
+/*}*/
+.add__list{
+  background: red;
 }
 .add__user{
+  cursor: pointer;
+  padding: 0px .3rem ;
+  margin-left: 2rem;
   background: rgb(40, 184, 83);
 }
 .edit__user{
@@ -404,4 +428,115 @@ color:#FFC737;
   width: 50%;
   padding: .4rem;
   margin-bottom: 15px;
+}
+
+
+
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.2rem;
+  color: var(--first-color);
+  transition: 0.3s;
+}
+
+.form__forgot {
+  display: block;
+  text-align: right;
+  margin-bottom: 2rem;
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: 0.5;
+}
+.form__forgot:hover {
+  color: var(--first-color);
+  transition: 0.5s;
+}
+.form__button {
+  width: 100%;
+  padding: 1rem;
+  font-size: var(--normal-font-size);
+  outline: none;
+  border: none;
+  margin-bottom: 3rem;
+  background-color: var(--first-color);
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.form__button:hover {
+  box-shadow: 0px 15px 36px rgba(0, 0, 0, 0.15);
+}
+
+/*===== MEDIA QUERIS =====*/
+@media screen and (min-width: 968px) {
+  .shape1 {
+    width: 400px;
+    height: 400px;
+    top: -11rem;
+    left: -6.5rem;
+  }
+  .shape2 {
+    width: 300px;
+    height: 300px;
+    right: -6.5rem;
+  }
+
+  .form {
+    grid-template-columns: 1.5fr 1fr;
+    padding: 0 2rem;
+  }
+  .form__content {
+    width: 320px;
+  }
+  .form__img {
+    display: block;
+    width: 700px;
+    justify-self: center;
+  }
+}
+
+
+.form__edit{
+  width: 60%;
+  margin: 0 auto;
+}
+.row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+.form-control{
+  padding: .5rem 3rem;
+  border-radius:25px;
+}
+
+
+.btn{
+  padding: .5rem 4rem;
+  margin-top: 1rem;
+  border-radius:25px;
+}
+
+.big__height{
+  padding: .5rem 3rem;
+}
+
+.overX{
+  width: 200px;
+  overflow-x: scroll;
 }

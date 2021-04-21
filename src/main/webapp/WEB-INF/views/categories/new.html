@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ===== CSS ===== -->
+    <link th:href="@{../../css/adminPanel.css}" rel="stylesheet">
+    <title>Приборная панель</title>
+
+</head>
+<body id="body-pd">
+<header class="header" id="header">
+    <div class="header__toggle">
+        <i class='bx bx-menu' id="header-toggle"></i>
+    </div>
+
+    <div class="header__img">
+    </div>
+    <div>
+        <h3>Vlad Martsenuk</h3>
+    </div>
+</header>
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div >
+            <a href="#" class="nav__logo">
+                <img class='nav__logo-icon' th:src="@{../../images/logo.svg}" alt="logo">
+
+                <span class="nav__logo-name">Альтитуда</span>
+            </a>
+            <div class="nav__list">
+                <a href="/users" class="nav__link">
+                    <i class='bx bx-user nav__icon' ></i>
+                    <span class="nav__name">Пользователи</span>
+                </a>
+
+                <a href="/product" class="nav__link">
+                    <i class='bx bx-message-square-detail nav__icon' ></i>
+                    <span class="nav__name">Товары</span>
+                </a>
+
+                <a href="/orders" class="nav__link">
+                    <i class='bx bx-bookmark nav__icon' ></i>
+                    <span class="nav__name">Заказы</span>
+                </a>
+
+                <a href="/categories" class="nav__link">
+                    <i class='bx bx-minus-front nav__icon' ></i>
+                    <span class="nav__name">Категории</span>
+                </a>
+
+                <a href="/subCategories" class="nav__link">
+                    <i class='bx bx-bar-chart-alt-2 nav__icon' ></i>
+                    <span class="nav__name">Подкатегории</span>
+                </a>
+
+                <a href="/producer" class="nav__link">
+                    <i class='bx bx-folder nav__icon' ></i>
+                    <span class="nav__name">Поставщики</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" class="nav__link">
+            <i class='bx bx-log-out nav__icon'></i>
+            <span class="nav__name">Выйти</span>
+        </a>
+    </nav>
+</div>
+<div class="tab">
+
+    <div class="tab__content tab__active" id="user" th:switch="${categories}">
+        <div class="user__actions" >
+            <h4>Категория:</h4>
+            <div class="user__actions-serch">
+                <a href="/сategories/new" class="add__user button__action" id="add_user">Добавить категорию</a>
+            </div>
+        </div>
+
+        <form method="POST" th:method="POST"th:action="@{/categories}" th:object="${categories}">
+            <div class="row">
+                <div class="form-group col-md-8">
+                    <label for="name" class="col-form-label">Название</label>
+                    <input type="text" th:field="*{name}" class="form-control"
+                           id="name" placeholder="First Name" />
+                    <div style="color: #ff0000; font-size: 10px;font-style: italic;"
+                         th:if="${#fields.hasErrors('name')}"
+                         th:errors="*{name}">Name Error
+                    </div>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="description" class="col-form-label">Описание</label>
+                    <input type="text" th:field="*{description}" class="form-control"
+                           id="description" placeholder="Last Name" />
+                    <div style="color: #ff0000; font-size: 10px;font-style: italic;"
+                         th:if="${#fields.hasErrors('description')}"
+                         th:errors="*{description}">Name Error
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-primary" value=" Submit ">
+                </div>
+
+                <input type="hidden" id="id" th:field="*{id}">
+
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>
+
+<!--===== MAIN JS =====-->
+<script src="../../../js/adminPanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ===== CSS ===== -->
+    <link th:href="@{../../css/adminPanel.css}" rel="stylesheet">
+    <title>Заказы</title>
+
+</head>
+<body>
+<header class="header" id="header">
+    <div class="header__toggle">
+        <i class='bx bx-menu' id="header-toggle"></i>
+    </div>
+
+    <div class="header__img">
+        <!--        <img th:src="@{../../images/}" alt="">-->
+    </div>
+    <div>
+        <h3>Vlad Martsenuk</h3>
+    </div>
+</header>
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div >
+            <a href="#" class="nav__logo">
+                <img class='nav__logo-icon' th:src="@{../../images/logo.svg}" alt="logo">
+                <span class="nav__logo-name">Альтитуда</span>
+            </a>
+
+            <div class="nav__list">
+                <a href="/users" class="nav__link">
+                    <i class='bx bx-user nav__icon' ></i>
+                    <span class="nav__name">Пользователи</span>
+                </a>
+
+                <a href="/product" class="nav__link">
+                    <i class='bx bx-message-square-detail nav__icon' ></i>
+                    <span class="nav__name">Товары</span>
+                </a>
+
+                <a href="/orders" class="nav__link">
+                    <i class='bx bx-bookmark nav__icon' ></i>
+                    <span class="nav__name">Заказы</span>
+                </a>
+
+                <a href="/categories" class="nav__link">
+                    <i class='bx bx-minus-front nav__icon' ></i>
+                    <span class="nav__name">Категории</span>
+                </a>
+
+                <a href="/subCategories" class="nav__link">
+                    <i class='bx bx-bar-chart-alt-2 nav__icon' ></i>
+                    <span class="nav__name">Подкатегории</span>
+                </a>
+
+                <a href="/producer" class="nav__link">
+                    <i class='bx bx-folder nav__icon' ></i>
+                    <span class="nav__name">Поставщики</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" class="nav__link">
+            <i class='bx bx-log-out nav__icon'></i>
+            <span class="nav__name">Выйти</span>
+        </a>
+    </nav>
+</div>
+<div class="tab">
+
+    <div class="tab__content tab__active" id="user" th:switch="${orders}">
+        <div class="user__actions" >
+            <h4>Заказы:</h4>
+            <div class="user__actions-serch">
+                <a href="/order/new" class="add__user button__action" id="add_user">Добавить заказ</a>
+            </div>
+        </div>
+
+        <table class="user__table" th:case="*">
+
+            <colgroup>
+                <col>
+                <col>
+                <col class="w">
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+            </colgroup>
+
+            <!--            <thead>-->
+            <!--            <tr>-->
+            <th style="width: 200px">Товар</th>
+            <th style="width: 150px">Количество</th>
+            <th style="width: 330px">Дата получения</th>
+            <th style="width: 150px">Дата заказа</th>
+            <th style="width: 130px;">Редактировать</th>
+            <th style="width: 120px;">Удаление</th>
+            <!--            </tr>-->
+            <!--            </thead>-->
+
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.product}"></td>
+                <td style="width: 100px" th:text="${order.quantity}"></td>
+                <td th:text="${order.receiving}"></td>
+                <td style="max-width: 300px" th:text="${order.timeOrder}"></td>
+
+                <td style="text-align: center">
+                    <a th:href="@{/order/{id}/edit(id=${order.getId()})}"><i class='bx bxs-edit-alt edit'></i></a>
+                </td>
+                <td >
+                    <a th:href="@{/order/{id}/delete(id=${order.getId()})}"><i class='bx bxs-trash-alt delete'></i></a>
+                    <!--                    <form th:method="POST" th:action="@{/subCategories/{id}/delete(id=${subCategory.getId()})}">-->
+                    <!--                        <input type="submit" value="Delete" class="delete__user button__action"/>-->
+                    <!--                    </form>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</div>
+
+
+<!--===== MAIN JS =====-->
+<script src="../../../js/adminPanel.js"></script>
+</body>
+</html>

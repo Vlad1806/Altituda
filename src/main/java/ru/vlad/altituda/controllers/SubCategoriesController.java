@@ -27,6 +27,19 @@ public class SubCategoriesController {
         return "subCategories/listSubCategories";
     }
 
+    @GetMapping("/subCategories")
+    public String subCategories(){
+        return "/subCategories";
+    }
+    @GetMapping("/categories")
+    public String categories(){
+        return "/categories";
+    }
+    @GetMapping("/users")
+    public String users(){
+        return "/users";
+    }
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         model.addAttribute("subCategories",subCategoriesDAO.show(id));
@@ -35,7 +48,7 @@ public class SubCategoriesController {
 
 
     @GetMapping("/new")
-    public String newSubCategory(@ModelAttribute("subCategories") SubCategories subCategories){
+    public String newPerson(@ModelAttribute("subCategories") SubCategories subCategories){
         return "subCategories/new";
     }
 
@@ -67,7 +80,7 @@ public class SubCategoriesController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id){
         subCategoriesDAO.delete(id);
         return "redirect:/subCategories";

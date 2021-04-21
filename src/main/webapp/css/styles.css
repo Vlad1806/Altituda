@@ -547,12 +547,12 @@ Collection
   flex-direction: column;
   justify-content: space-between;
   /* border:1px solid red; */
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all .8s;
 }
 .category__wrap:hover{
   transform: scale(1.2);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 .category__wrap span{
   font-size: 1.5rem;
@@ -658,7 +658,7 @@ Collection Media Query
   .collection__box:not(:last-child) {
     margin: 0 0 1.6rem;
   }
-  
+
 }
 
 @media only screen and (max-width: 568px) {
@@ -1280,7 +1280,7 @@ Go Up
   bottom: 10%;
   padding: 0.8rem 1.4rem;
   border-radius: 50%;
-  
+
   background-color: var(--orange);
   visibility: hidden;
   cursor: pointer;
@@ -1502,7 +1502,7 @@ Facility Media Query
 
 /*
 ======================
-Testimonial 
+Testimonial
 ======================
 */
 
@@ -2529,4 +2529,14 @@ Cart Area Media Query
     width: 1.5rem;
     height: 1.5rem;
   }
+}
+
+
+/*.description__wrap{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: baseline;*/
+/*}*/
+.description__wrap span{
+  margin-bottom: 15px;
 }

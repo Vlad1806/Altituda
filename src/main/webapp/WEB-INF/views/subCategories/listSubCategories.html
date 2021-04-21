@@ -94,7 +94,7 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <!-- ===== CSS ===== -->
     <link th:href="@{../../css/adminPanel.css}" rel="stylesheet">
-    <title>Приборная панель</title>
+    <title>Подкатегории</title>
 
 </head>
 <body id="body-pd">
@@ -116,39 +116,38 @@
         <div >
             <a href="#" class="nav__logo">
                 <img class='nav__logo-icon' th:src="@{../../images/logo.svg}" alt="logo">
-                <!-- <i class='bx bx-layer nav__logo-icon'></i> -->
                 <span class="nav__logo-name">Альтитуда</span>
             </a>
 
             <div class="nav__list">
-                <!-- <a href="#dashboard" class="nav__link active">
-                <i class='bx bx-grid-alt nav__icon' ></i>
-                    <span class="nav__name">Приборная панель</span>
-                </a> -->
-
-                <a href="#user" class="nav__link">
+                <a href="/users" class="nav__link">
                     <i class='bx bx-user nav__icon' ></i>
                     <span class="nav__name">Пользователи</span>
                 </a>
 
-                <a href="#messages" class="nav__link">
+                <a href="/product" class="nav__link">
                     <i class='bx bx-message-square-detail nav__icon' ></i>
                     <span class="nav__name">Товары</span>
                 </a>
 
-                <a href="#favorites" class="nav__link">
+                <a href="/orders" class="nav__link">
                     <i class='bx bx-bookmark nav__icon' ></i>
                     <span class="nav__name">Заказы</span>
                 </a>
 
-                <a href="#data" class="nav__link">
-                    <i class='bx bx-folder nav__icon' ></i>
+                <a href="/categories" class="nav__link">
+                    <i class='bx bx-minus-front nav__icon' ></i>
                     <span class="nav__name">Категории</span>
                 </a>
 
-                <a href="/adminSubCategory.html" class="nav__link">
+                <a href="/subCategories" class="nav__link">
                     <i class='bx bx-bar-chart-alt-2 nav__icon' ></i>
                     <span class="nav__name">Подкатегории</span>
+                </a>
+
+                <a href="/producer" class="nav__link">
+                    <i class='bx bx-folder nav__icon' ></i>
+                    <span class="nav__name">Поставщики</span>
                 </a>
             </div>
         </div>
@@ -159,32 +158,21 @@
         </a>
     </nav>
 </div>
-
-<!-- <h1>Components</h1> -->
 <div class="tab">
     <div class="tab__content " id="dashboard">Dashboard</div>
 
 
-
     <div class="tab__content tab__active" id="user" th:switch="${subCategories}">
         <div class="user__actions" >
-            <h4>Категории</h4>
+            <h4>Подкатегория:</h4>
             <div class="user__actions-serch">
-                <span>Категория:</span>
-                <input class="search__user" type="text" placeholder="введите категорию">
-                <input type="submit" class="search__user " value="Найти">
-                <button class="add__user button__action" id="add_user">Добавить категорию</button>
-                <button class="edit__user button__action" id="edit_user">Редактировать категорию</button>
-                <button class="delete__user button__action" id="delete_user">Удалить категорию</button>
+                <a href="/subCategories/new" class="add__user button__action" id="add_user">Добавить категорию</a>
             </div>
         </div>
 
-
         <table class="user__table" th:case="*">
-
             <thead>
             <tr>
-                <th>№</th>
                 <th>Подкатегория</th>
                 <th>Описание</th>
                 <th>Категория</th>
@@ -194,93 +182,25 @@
             </thead>
             <tbody>
             <tr th:each="subCategory : ${subCategories}">
-                <td th:text="${subCategory.id}"></td>
                 <td th:text="${subCategory.name}"></td>
                 <td th:text="${subCategory.description}"></td>
                 <td th:text="${subCategory.category}"></td>
 
-                <td>
+                <td >
                     <a th:href="@{/subCategories/{id}/edit(id=${subCategory.getId()})}"><i class='bx bxs-edit-alt edit'></i></a>
                 </td>
-                <td>
-                    <form th:method="DELETE" th:action="@{/subCategories/{id}(id=${subCategory.getId()})}">
-                        <input type="submit" value="Delete" class="delete__user button__action"/>
-
-                    </form>
+                <td >
+                    <a th:href="@{/subCategories/{id}/delete(id=${subCategory.getId()})}"><i class='bx bxs-trash-alt delete'></i></a>
+<!--                    <form th:method="POST" th:action="@{/subCategories/{id}/delete(id=${subCategory.getId()})}">-->
+<!--                        <input type="submit" value="Delete" class="delete__user button__action"/>-->
+<!--                    </form>-->
                 </td>
             </tr>
             </tbody>
         </table>
 
     </div>
-
-
-
-
-
-    <div class="tab__content" id="product">товары</div>
-    <div class="tab__content" id="favorites">Favorites</div>
-    <div class="tab__content" id="data">Data</div>
-    <div class="tab__content" id="analytics">Analytics</div>
 </div>
-
-
-
-
-
-<!-- The Modal -->
-<div id="modal__add-user" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form action="#" class="user__form">
-            <h2>Добавление категории</h2>
-            <input class="search__user mb-form" type="text" placeholder="Введите категорию">
-            <span>Введите описание</span>
-            <textarea name="Text1" cols="40" rows="5"></textarea>
-            <!-- <input class="search__user mb-form" type="text" placeholder="Введите описание"> -->
-            <input class="search__user mb-form add__user" type="submit" value="Добавить">
-        </form>
-    </div>
-
-</div>
-
-
-
-<div id="modal__edit-user" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close__edit">&times;</span>
-        <form action="#" class="user__form">
-            <h2>Редактирование категорию</h2>
-            <input class="search__user mb-form" type="text" placeholder="Введите категорию">
-            <span>Введите описание</span>
-            <textarea name="Text1" cols="40" rows="5"></textarea>
-            <input class="search__user mb-form edit__user" type="submit" value="Редактировать">
-        </form>
-    </div>
-
-</div>
-
-
-<div id="modal__delete-user" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close__delete">&times;</span>
-        <form action="#" class="user__form">
-            <h2>Удаление категории</h2>
-            <input class="search__user mb-form" type="text" placeholder="Bведите категорию">
-            <input class="search__user mb-form delete__user" type="submit" value="Удалить">
-        </form>
-    </div>
-
-</div>
-
-
-
 
 </div>
 

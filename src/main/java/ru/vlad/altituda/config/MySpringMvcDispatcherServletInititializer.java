@@ -24,18 +24,18 @@ public class MySpringMvcDispatcherServletInititializer extends AbstractAnnotatio
         return new String[] {"/"};
     }
 
-//    @Override
-//    protected Filter[] getServletFilters() {
-//        CharacterEncodingFilter filter = new CharacterEncodingFilter();
-//        filter.setEncoding("UTF-8");
-//        filter.setForceEncoding(true);
-//        return new Filter[] { filter };
-//    }
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        return new Filter[] { filter };
+    }
 
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
-        registerHiddenFieldFilter(aServletContext);
+        //registerHiddenFieldFilter(aServletContext);
     }
 
     private void registerHiddenFieldFilter(ServletContext aContext) {
