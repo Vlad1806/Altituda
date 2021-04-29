@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="../../../images/logo.svg" type="image/x-icon" />
+
+    <!-- Carousel -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css" />
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css" />
+
+    <!-- Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="../../../css/styles.css" />
+
+    <title>Корзина</title>
+</head>
+
+<body>
+<header id="header" class="header">
+    <div class="navigation">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav__hamburger">
+                    <svg>
+                        <use xlink:href="../../../images/sprite.svg#icon-menu"></use>
+                    </svg>
+                </div>
+
+                <div class="nav__logo">
+                    <img src="../../../images/logo.svg" alt="logo">
+                    <a href="/" class="scroll-link">
+                        Альтитуда
+                    </a>
+                </div>
+
+                <div class="nav__menu">
+                    <div class="menu__top">
+                        <span class="nav__category">Альтитуда</span>
+                        <a href="#" class="close__toggle">
+                            <svg>
+                                <use xlink:href="../../../images/sprite.svg#icon-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="/home" class="nav__link">Главная</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/home#collection" class="nav__link">Категории</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/home#testimonial" class="nav__link">Отзывы</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/aboutUs" class="nav__link">О нас</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav__icons">
+                    <a href="./login.html" class="icon__item">
+                        <svg class="icon__user">
+                            <use xlink:href="../../../images/sprite.svg#icon-user"></use>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="icon__item">
+                        <svg class="icon__cart">
+                            <use xlink:href="../../../images/sprite.svg#icon-shopping-basket"></use>
+                        </svg>
+                        <span id="cart__total">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="page__title-area">
+        <div class="container">
+            <div class="page__title-container">
+                <ul class="page__titles">
+                    <li>
+                        <a href="/">
+                            <svg>
+                                <use xlink:href="../../../images/sprite.svg#icon-home"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="page__title">Корзина</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="main">
+    <section class="section cart__area" th:with="var = ${0}">
+        <div class="container">
+            <div class="responsive__cart-area">
+                <form class="cart__form" method="POST" action="/shoppingCart/order" >
+                    <div class="cart__table table-responsive">
+                        <table width="100%" class="table" th:switch="session">
+                            <thead>
+                            <tr>
+                                <th>Товар</th>
+                                <th>Название</th>
+                                <th>Цена</th>
+                                <th>Количество</th>
+                                <th>Всего</th>
+                            </tr>
+                            </thead>
+                            <tbody class="tbody__scroll">
+                            <tr th:each="item : ${session.shoppingCart}">
+                                <td class="product__thumbnail">
+<!--                                th:width="${var + item.product.price * item.quantity}-->
+                                    <a href="#">
+                                        <img th:src="${'../../images/' + item.product.photo}" alt="">
+                                    </a>
+                                </td>
+                                <td class="product__name">
+                                    <a href="#" th:text="Фанера">Фанера</a>
+                                    <br><br>
+                                    <small th:text="${item.product.description}">1525х1250х4мм</small>
+                                </td>
+                                <td class="product__price">
+                                    <div class="price">
+                                        <span class="new__price" th:text="${item.product.price + ' грн'}">250 грн</span>
+                                    </div>
+                                </td>
+                                <td class="product__quantity">
+                                    <div class="input-counter">
+
+                                        <div class="counter-btn" th:text="${item.quantity}"></div>
+
+                                    </div>
+                                </td>
+                                <td class="product__subtotal">
+                                    <div class="price">
+                                        <span class="new__price" th:text="${item.product.price * item.quantity +' грн'}">250 грн</span>
+                                    </div>
+                                    <a th:href="@{/shoppingCart/delete/{id}(id=${item.product.getId()})}" class="remove__cart-item">
+                                        <svg>
+                                            <use xlink:href="../../../images/sprite.svg#icon-trash"></use>
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="cart-btns">
+                        <div class="continue__shopping">
+                            <a href="/home">Вернуться к покупкам</a>
+                        </div>
+                    </div>
+
+                    <div class="cart__totals">
+                        <h3>Сумма</h3>
+                        <ul>
+                            <li>
+                                Дата получения:
+                                <input type="date" id="date" name="date">
+                            </li>
+                            <li>
+                                Итог
+                                <span class="new__price" th:text="${var} + ' грн'">250 грн</span>
+                            </li>
+                        </ul>
+                        <input type="submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility Section -->
+    <section class="facility__section section" id="facility">
+        <div class="container">
+            <div class="facility__contianer" data-aos="fade-up" data-aos-duration="1200">
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="../../../images/sprite.svg#icon-airplane"></use>
+                        </svg>
+                    </div>
+                    <p>бессплатная доставка по городу</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="../../../images/sprite.svg#icon-credit-card-alt"></use>
+                        </svg>
+                    </div>
+                    <p>100% гарантия возврата денег</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="../../../images/sprite.svg#icon-credit-card"></use>
+                        </svg>
+                    </div>
+                    <p>множественные способы оплаты</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="../../../images/sprite.svg#icon-headphones"></use>
+                        </svg>
+                    </div>
+                    <p>24/7 онлайн поддержка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="section footer">
+    <div class="container">
+        <div class="footer__top">
+            <!-- <div class="footer-top__box">
+              <h3>EXTRAS</h3>
+              <a href="#">Brands</a>
+              <a href="#">Gift Certificates</a>
+              <a href="#">Affiliate</a>
+              <a href="#">Specials</a>
+              <a href="#">Site Map</a>
+            </div>
+            <div class="footer-top__box">
+              <h3>INFORMATION</h3>
+              <a href="#">About Us</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms & Conditions</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Site Map</a>
+            </div>
+            <div class="footer-top__box">
+              <h3>MY ACCOUNT</h3>
+              <a href="#">My Account</a>
+              <a href="#">Order History</a>
+              <a href="#">Wish List</a>
+              <a href="#">Newsletter</a>
+              <a href="#">Returns</a>
+            </div> -->
+            <div class="footer-top__box">
+                <h3>КОНТАКТЫ</h3>
+                <div>
+            <span>
+              <svg>
+                <use xlink:href="../../../images/sprite.svg#icon-location"></use>
+              </svg>
+            </span>
+                    Княжеская 42, Украина
+                </div>
+                <div>
+            <span>
+              <svg>
+                <use xlink:href="../../../images/sprite.svg#icon-envelop"></use>
+              </svg>
+            </span>
+                    company@gmail.com
+                </div>
+                <div>
+            <span>
+              <svg>
+                <use xlink:href="../../../images/sprite.svg#icon-phone"></use>
+              </svg>
+            </span>
+                    456-456-4512
+                </div>
+                <div>
+            <span>
+              <svg>
+                <use xlink:href="../../../images/sprite.svg#icon-paperplane"></use>
+              </svg>
+            </span>
+                    Одесса, Украина
+                </div>
+            </div>
+
+            <div class="footer-top__box">
+                <h3>О НАС</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                    provident rem sed minus natus unde vel modi!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo praesentium, numquam non
+                    provident rem sed minus natus unde vel modi!</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="footer__bottom">
+      <div class="footer-bottom__box">
+
+      </div>
+      <div class="footer-bottom__box">
+
+      </div>
+    </div> -->
+    </div>
+</footer>
+
+<!-- End Footer -->
+
+<!-- Go To -->
+
+<a href="#header" class="goto-top scroll-link">
+    <svg>
+        <use xlink:href="../../../images/sprite.svg#icon-arrow-up"></use>
+    </svg>
+</a>
+
+<!-- Glide Carousel Script -->
+<script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+
+<!-- Animate On Scroll -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="../../../js/products.js"></script>
+<script src="../../../js/index.js"></script>
+<script src="../../../js/slider.js"></script>
+</body>
+
+</html>
