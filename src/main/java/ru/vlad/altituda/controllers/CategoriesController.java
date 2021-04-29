@@ -27,17 +27,26 @@ public class CategoriesController {
         return "categories/listCategories";
     }
 
+
     @GetMapping("/subCategories")
     public String subCategories(){
         return "/subCategories";
     }
-    @GetMapping("/categories")
-    public String categories(){
-        return "/categories";
-    }
     @GetMapping("/users")
     public String users(){
         return "/users";
+    }
+    @GetMapping("/order")
+    public String order(){
+        return "/order";
+    }
+    @GetMapping("/product")
+    public String product(){
+        return "/product";
+    }
+    @GetMapping("/producer")
+    public String producer(){
+        return "/producer";
     }
 
     @GetMapping("/{id}")

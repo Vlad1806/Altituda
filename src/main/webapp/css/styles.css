@@ -57,7 +57,11 @@ h3,
 h4 {
   font-weight: 500;
 }
-
+a,:visited,a:hover,a:active {
+  color: #000 !important;
+  text-decoration: none;
+  cursor:pointer;
+}
 /*
 ======================
 Header
@@ -545,7 +549,7 @@ Collection
 .category__wrap{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   /* border:1px solid red; */
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all .8s;
@@ -562,10 +566,12 @@ text-align: center;
 /* border:1px solid red; */
 }
 
-.category__wrap:nth-of-type(2) img{
-  padding-top: 2rem;
+/*.category__wrap:nth-of-type(2) img{*/
+/*  padding-top: 2rem;*/
+/*}*/
+.category__wrap:nth-of-type(3) img{
+  padding-top: 2.3rem;
 }
-
 .collection__container {
   width: 100%;
   padding: 0 1.6rem;
@@ -2063,49 +2069,58 @@ Product Details
   padding-bottom: 1rem;
 }
 
-.input-counter {
-  display: flex;
-  align-items: center;
-}
+/*.input-counter {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
 
-.input-counter div {
-  display: flex;
-}
+/*.input-counter div {*/
+/*  display: flex;*/
+/*}*/
 
-.input-counter li span {
-  font-size: 1.4rem;
-  color: var(--black3);
-  margin-right: 1rem;
-}
+/*.input-counter li span {*/
+/*  font-size: 1.4rem;*/
+/*  color: var(--black3);*/
+/*  margin-right: 1rem;*/
+/*}*/
 
-.minus-btn,
-.plus-btn {
-  display: inline-block;
-  border: 1px solid var(--primaryColor);
-  padding: 0.8rem 1rem;
-  margin-right: 0;
-  cursor: pointer;
-}
+/*.minus-btn,*/
+/*.plus-btn {*/
+/*  display: inline-block;*/
+/*  border: 1px solid var(--primaryColor);*/
+/*  padding: 0.8rem 1rem;*/
+/*  margin-right: 0;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.plus-btn {
-  border-left-color: transparent;
-}
+/*.plus-btn {*/
+/*  border-left-color: transparent;*/
+/*}*/
 
-.minus-btn {
-  border-right-color: transparent;
-}
+/*.minus-btn {*/
+/*  border-right-color: transparent;*/
+/*}*/
 
-.counter-btn {
-  width: 7rem;
-  padding: 1rem 0;
+/*.counter-btn {*/
+/*  width: 7rem;*/
+/*  padding: 1rem 0;*/
+/*  text-align: center;*/
+/*  border: 1px solid var(--primaryColor);*/
+/*}*/
+
+/*.input-counter svg {*/
+/*  width: 1.8rem;*/
+/*  height: 1.8rem;*/
+/*  fill: var(--grey3);*/
+/*}*/
+.product__quantity{
+  justify-content: center;
+}
+.input-counter{
+  horiz-align: center;
+}
+.counter-btn{
   text-align: center;
-  border: 1px solid var(--primaryColor);
-}
-
-.input-counter svg {
-  width: 1.8rem;
-  height: 1.8rem;
-  fill: var(--grey3);
 }
 
 .product__info li {

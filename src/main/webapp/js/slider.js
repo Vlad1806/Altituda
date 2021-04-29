@@ -19,10 +19,10 @@ if (slider1) {
   new Glide(slider1, {
     type: "carousel",
     startAt: 0,
-    autoplay: 4000,
+    autoplay: 2000,
     hoverpause: true,
     perView: 1,
-    animationDuration: 1000,
+    animationDuration: 800,
     animationTimingFunc: "linear",
   }).mount();
 }

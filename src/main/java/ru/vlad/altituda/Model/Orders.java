@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -15,9 +16,9 @@ public class Orders {
     private int product;
     private int quantity;
     private String receiving;
-    private String timeOrder;
+    private Timestamp timeOrder;
 
-    public Orders(int id, int product, int quantity, String receiving, String timeOrder) {
+    public Orders(int id, int product, int quantity, String receiving, Timestamp timeOrder) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;

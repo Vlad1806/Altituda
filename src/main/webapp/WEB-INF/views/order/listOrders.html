@@ -11,7 +11,7 @@
     <title>Заказы</title>
 
 </head>
-<body>
+<body id="body-pd">
 <header class="header" id="header">
     <div class="header__toggle">
         <i class='bx bx-menu' id="header-toggle"></i>
@@ -44,7 +44,7 @@
                     <span class="nav__name">Товары</span>
                 </a>
 
-                <a href="/orders" class="nav__link">
+                <a href="/order" class="nav__link">
                     <i class='bx bx-bookmark nav__icon' ></i>
                     <span class="nav__name">Заказы</span>
                 </a>
@@ -84,27 +84,16 @@
 
         <table class="user__table" th:case="*">
 
-            <colgroup>
-                <col>
-                <col>
-                <col class="w">
-                <col>
-                <col>
-                <col>
-                <col>
-                <col>
-            </colgroup>
-
-            <!--            <thead>-->
-            <!--            <tr>-->
-            <th style="width: 200px">Товар</th>
-            <th style="width: 150px">Количество</th>
-            <th style="width: 330px">Дата получения</th>
-            <th style="width: 150px">Дата заказа</th>
-            <th style="width: 130px;">Редактировать</th>
-            <th style="width: 120px;">Удаление</th>
-            <!--            </tr>-->
-            <!--            </thead>-->
+            <thead>
+            <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Дата получения</th>
+            <th>Дата заказа</th>
+            <th>Редактировать</th>
+            <th>Удаление</th>
+            </tr>
+            </thead>
 
             <tbody>
             <tr th:each="order : ${orders}">

@@ -62,7 +62,7 @@
                             <a href="#testimonial" class="nav__link scroll-link">Отзывы</a>
                         </li>
                         <li class="nav__item">
-                            <a href="./aboutUs.html"class="nav__link">О нас</a>
+                            <a href="/aboutUs" class="nav__link">О нас</a>
                         </li>
                     </ul>
                 </div>
@@ -80,11 +80,11 @@
                       </svg>
                     </a> -->
 
-                    <a href="./cart.html" class="icon__item" id="cart__icon">
+                    <a href="/shoppingCart" class="icon__item" id="cart__icon">
                         <svg class="icon__cart">
                             <use xlink:href="../../images/sprite.svg#icon-shopping-basket"></use>
                         </svg>
-                        <span id="cart__total">0</span>
+<!--                        <span id="cart__total">0</span>-->
                     </a>
                 </div>
             </nav>
@@ -166,7 +166,7 @@
                 </a>
 
                 <a href="/home/metal" class="category__wrap">
-                    <img src="../../../images/metal2.webp" alt="">
+                    <img src="../../../images/metal2.webp" class="category__wrap__img" alt="">
                     <span>Металл</span>
                 </a>
 
@@ -213,7 +213,7 @@
                                     <div class="product__price">
                                         <h4 th:text="'Цена: ' + ${products.price} + ' грн'"></h4>
                                     </div>
-                                    <button type="submit" class="product__btn" id='product__${id}'>Добавить</button>
+                                    <a th:href="@{/shoppingCart/{id}(id=${products.getId()})}" class="product__btn" id='product__${id}'>Добавить</a>
                                 </div>
 
                             </div>
@@ -418,221 +418,6 @@
     </div>
 </footer>
 <!-- End Footer -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PopUp -->
-<div class="popup hide__popup">
-    <div class="popup__content">
-        <div class="popup__close">
-            <svg>
-                <use xlink:href="../../images/sprite.svg#icon-cross"></use>
-            </svg>
-        </div>
-        <div class="cart__table table-responsive">
-            <table width="100%" class="table">
-                <thead>
-                <tr>
-                    <th>Товар</th>
-                    <th>Название</th>
-                    <th>Цена</th>
-                    <th>Количество</th>
-                    <th>Всего</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="product__thumbnail">
-                        <a href="#">
-                            <img src="../../../images/Fanara-1.webp" alt="">
-                        </a>
-                    </td>
-                    <td class="product__name">
-                        <a href="#">Фанера</a>
-                        <br><br>
-                        <small>1525х1250х4мм</small>
-                    </td>
-                    <td class="product__price">
-                        <div class="price">
-                            <span class="new__price">$250.99</span>
-                        </div>
-                    </td>
-                    <td class="product__quantity">
-                        <div class="input-counter">
-                            <div>
-                            <span class="minus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-minus"></use>
-                                </svg>
-                            </span>
-                                <input type="text" min="1" value="1" max="10" class="counter-btn">
-                                <span class="plus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-plus"></use>
-                                </svg>
-                            </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="product__subtotal">
-                        <div class="price">
-                            <span class="new__price">$250.99</span>
-                        </div>
-                        <a href="#" class="remove__cart-item">
-                            <svg>
-                                <use xlink:href="./images/sprite.svg#icon-trash"></use>
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product__thumbnail">
-                        <a href="#">
-                            <img src="./images/armatura.webp" alt="">
-                        </a>
-                    </td>
-                    <td class="product__name">
-                        <a href="#">Aрматура</a>
-                        <br><br>
-                        <small>8мм</small>
-                    </td>
-                    <td class="product__price">
-                        <div class="price">
-                            <span class="new__price">34 грн</span>
-                        </div>
-                    </td>
-                    <td class="product__quantity">
-                        <div class="input-counter">
-                            <div>
-                            <span class="minus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-minus"></use>
-                                </svg>
-                            </span>
-                                <input type="text" min="1" value="1" max="10" class="counter-btn">
-                                <span class="plus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-plus"></use>
-                                </svg>
-                            </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="product__subtotal">
-                        <div class="price">
-                            <span class="new__price">34 грн</span>
-                        </div>
-                        <a href="#" class="remove__cart-item">
-                            <svg>
-                                <use xlink:href="./images/sprite.svg#icon-trash"></use>
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product__thumbnail">
-                        <a href="#">
-                            <img src="./images/armatura3.jpeg" alt="">
-                        </a>
-                    </td>
-                    <td class="product__name">
-                        <a href="#">Арматура</a>
-                        <br><br>
-                        <small>12мм</small>
-                    </td>
-                    <td class="product__price">
-                        <div class="price">
-                            <span class="new__price">47 грн</span>
-                        </div>
-                    </td>
-                    <td class="product__quantity">
-                        <div class="input-counter">
-                            <div>
-                            <span class="minus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-minus"></use>
-                                </svg>
-                            </span>
-                                <input type="text" min="1" value="1" max="10" class="counter-btn">
-                                <span class="plus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-plus"></use>
-                                </svg>
-                            </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="product__subtotal">
-                        <div class="price">
-                            <span class="new__price">47 грн</span>
-                        </div>
-                        <a href="#" class="remove__cart-item">
-                            <svg>
-                                <use xlink:href="./images/sprite.svg#icon-trash"></use>
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product__thumbnail">
-                        <a href="#">
-                            <img src="./images/osb.webp" alt="">
-                        </a>
-                    </td>
-                    <td class="product__name">
-                        <a href="#">ОСБ</a>
-                        <br><br>
-                        <small>2500х1250х10мм</small>
-                    </td>
-                    <td class="product__price">
-                        <div class="price">
-                            <span class="new__price">345 грн</span>
-                        </div>
-                    </td>
-                    <td class="product__quantity">
-                        <div class="input-counter">
-                            <div>
-                            <span class="minus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-minus"></use>
-                                </svg>
-                            </span>
-                                <input type="text" min="1" value="1" max="10" class="counter-btn">
-                                <span class="plus-btn">
-                                <svg>
-                                    <use xlink:href="./images/sprite.svg#icon-plus"></use>
-                                </svg>
-                            </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="product__subtotal">
-                        <div class="price">
-                            <span class="new__price">345 грн</span>
-                        </div>
-                        <button href="#" class="remove__cart-item">
-                            <svg>
-                                <use xlink:href="./images/sprite.svg#icon-trash"></use>
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-
 
 <!-- Go To -->
 <a href="#header" class="goto-top scroll-link">

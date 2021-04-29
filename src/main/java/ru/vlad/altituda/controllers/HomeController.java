@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.vlad.altituda.Model.Categories;
-import ru.vlad.altituda.Model.Producer;
-import ru.vlad.altituda.Model.Product;
 import ru.vlad.altituda.Model.SubCategories;
 import ru.vlad.altituda.dao.ProductDAO;
 
@@ -70,4 +67,13 @@ public class HomeController {
         model.addAttribute("product",productDAO.bySubCategory(2,id));
         return "home/krovlya";
     }
+
+
+
+
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "/aboutUs";
+    }
+
 }

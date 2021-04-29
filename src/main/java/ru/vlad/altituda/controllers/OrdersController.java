@@ -20,6 +20,7 @@ public class OrdersController {
         this.ordersDAO = ordersDAO;
     }
 
+
     @GetMapping("/subCategories")
     public String subCategories(){
         return "/subCategories";
@@ -32,7 +33,14 @@ public class OrdersController {
     public String users(){
         return "/users";
     }
-
+    @GetMapping("/product")
+    public String product(){
+        return "/product";
+    }
+    @GetMapping("/producer")
+    public String producer(){
+        return "/producer";
+    }
 
 
     @GetMapping()

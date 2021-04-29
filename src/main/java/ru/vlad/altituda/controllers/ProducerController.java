@@ -32,6 +32,14 @@ public class ProducerController {
     public String users(){
         return "/users";
     }
+    @GetMapping("/order")
+    public String order(){
+        return "/order";
+    }
+    @GetMapping("/product")
+    public String product(){
+        return "/product";
+    }
 
     @GetMapping()
     public String index(Model model){

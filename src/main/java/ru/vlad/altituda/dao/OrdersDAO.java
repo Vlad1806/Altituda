@@ -42,7 +42,7 @@ public class OrdersDAO {
                 order.setProduct(resultSet.getInt("product_id"));
                 order.setQuantity(resultSet.getInt("quantity"));
                 order.setReceiving(resultSet.getString("date_receiving"));
-                order.setTimeOrder(resultSet.getString("time_order"));
+                order.setTimeOrder(resultSet.getTimestamp("time_order"));
 
                 orders.add(order);
             }
@@ -66,7 +66,7 @@ public class OrdersDAO {
                 order.setProduct(resultSet.getInt("product_id"));
                 order.setQuantity(resultSet.getInt("quantity"));
                 order.setReceiving(resultSet.getString("date_receiving"));
-                order.setTimeOrder(resultSet.getString("time_order"));
+                order.setTimeOrder(resultSet.getTimestamp("time_order"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -105,7 +105,7 @@ public class OrdersDAO {
             preparedStatement.setInt(1, updateOrders.getProduct());
             preparedStatement.setInt(2, updateOrders.getQuantity());
             preparedStatement.setDate(3, Date.valueOf(updateOrders.getReceiving()));
-            preparedStatement.setTimestamp(4, Timestamp.valueOf(updateOrders.getTimeOrder()));
+            preparedStatement.setTimestamp(4, updateOrders.getTimeOrder());
             preparedStatement.setInt(5,id);
 
             preparedStatement.executeUpdate();

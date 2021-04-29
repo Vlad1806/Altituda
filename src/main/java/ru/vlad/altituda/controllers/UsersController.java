@@ -27,6 +27,7 @@ public class UsersController {
         return "users/listUsers";
     }
 
+
     @GetMapping("/subCategories")
     public String subCategories(){
         return "/subCategories";
@@ -35,9 +36,17 @@ public class UsersController {
     public String categories(){
         return "/categories";
     }
-    @GetMapping("/users")
-    public String users(){
-        return "/users";
+    @GetMapping("/order")
+    public String order(){
+        return "/order";
+    }
+    @GetMapping("/product")
+    public String product(){
+        return "/product";
+    }
+    @GetMapping("/producer")
+    public String producer(){
+        return "/producer";
     }
 
     @GetMapping("/{email}")

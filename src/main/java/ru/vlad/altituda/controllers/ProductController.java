@@ -24,6 +24,7 @@ public class ProductController {
         this.productDAO = productDAO;
     }
 
+
     @GetMapping("/subCategories")
     public String subCategories(){
         return "/subCategories";
@@ -36,7 +37,14 @@ public class ProductController {
     public String users(){
         return "/users";
     }
-
+    @GetMapping("/order")
+    public String order(){
+        return "/order";
+    }
+    @GetMapping("/producer")
+    public String producer(){
+        return "/producer";
+    }
 
 
     @GetMapping()
@@ -60,10 +68,6 @@ public class ProductController {
         model.addAttribute("subCategories",sub);
         return "product/new";
     }
-//    List<SubCategories> sub = productDAO.allSubCategories();
-//    List<Producer> producer = productDAO.allProducer();
-//        model.addAttribute("producer",producer);
-//        model.addAttribute("subCategories",sub);
 
     @PostMapping()
     public String create(Model model ,@ModelAttribute("product") @Valid Product product,
