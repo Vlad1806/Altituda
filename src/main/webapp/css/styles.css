@@ -549,7 +549,7 @@ Collection
 .category__wrap{
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
+  justify-content: space-between;
   /* border:1px solid red; */
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all .8s;
@@ -562,13 +562,11 @@ Collection
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: .1rem;
-text-align: center;
+  text-align: center;
+  /*margin-bottom: 1.5rem;*/
 /* border:1px solid red; */
 }
 
-/*.category__wrap:nth-of-type(2) img{*/
-/*  padding-top: 2rem;*/
-/*}*/
 .category__wrap:nth-of-type(3) img{
   padding-top: 2.3rem;
 }
@@ -948,13 +946,14 @@ transform: scale(1.07);
 
 .product__btn {
   display: inline-block;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   width: 100%;
   padding: 1.4rem 0;
   bottom: 0;
   border:none;
   color: var(--black);
+  background-color: #EFEFEF;
   cursor: pointer;
 }
 
@@ -1012,8 +1011,9 @@ Latest Products Media Query
   }
 
   .product {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
+    justify-content: space-between;
   }
 
   .latest__products .glide__arrow--left,
@@ -1029,7 +1029,7 @@ Latest Products Media Query
 
 @media only screen and (max-width: 768px) {
   .latest__products .glide__arrow--left,
-  .related__products .glide__arrow--left {
+  .related__products .glide__arrow--left {@media only screen and (max-width: 999px)
     left: 70%;
   }
 
@@ -1061,6 +1061,9 @@ Latest Products Media Query
     width: 100%;
     font-size: 1rem;
     padding: 0.8rem 0;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*bottom: 0;*/
     border: 1px solid var(--black);
   }
 
@@ -1851,7 +1854,6 @@ Footer
   transition: 0.6s;
   cursor: pointer;
 }
-
 .footer-top__box a:hover {
   color: var(--orange);
 }
@@ -2015,7 +2017,6 @@ Product Details
 }
 
 .new__price {
-  font-size: 2rem;
   color: var(--orange);
 }
 
@@ -2210,7 +2211,6 @@ Product Details
 
 #description li {
   line-height: 3rem;
-  color: vaf;
 }
 
 #description ol {
@@ -2430,6 +2430,10 @@ Cart Area
   font-size: 1.6rem;
 }
 
+.product__price{
+  flex-grow: 1;
+}
+
 .remove__cart-item {
   margin-left: 1rem;
 }
@@ -2554,4 +2558,13 @@ Cart Area Media Query
 /*}*/
 .description__wrap span{
   margin-bottom: 15px;
+}
+
+a[href^="tel:"],a[href^="tel:"]:visited,a[href^="tel:"]:active,a[href^="tel:"]:focus
+,a[href^="mailto:"],a[href^="mailto:"]:visited,a[href^="mailtol:"]:active,a[href^="mailto:"]:focus{
+  color: #959595 !important;
+}
+
+a[href^="tel:"]:hover,a[href^="mailto:"]:hover{
+  color: #a32ac2 !important;
 }

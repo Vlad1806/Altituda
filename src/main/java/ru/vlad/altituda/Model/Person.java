@@ -1,10 +1,9 @@
 package ru.vlad.altituda.Model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
 
 
 public class Person {
@@ -12,7 +11,8 @@ public class Person {
     @NotEmpty(message = "Name shouldn't be empty")
     @Size(min = 2,max = 30,message = "Name should be between 2 and 30 characters")
     private String name;
-    @Min(value = 0,message = "Age should be grate than 0")
+    @NotEmpty
+    @Min(value = 1,message = "Age should be grate than 0")
     private int age;
     @NotEmpty(message = "E-mail shouldn't be empty")
     //@Email(message = "Email should be valid")

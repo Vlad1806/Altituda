@@ -10,10 +10,12 @@ import lombok.Setter;
 public class Item {
     private Product product = new Product();
     public int quantity;
+    private String subCategory;
 
 
-    public Item(Product product, int quantity) {
+    public Item(Product product, int quantity, String subCategory) {
         this.product = product;
         this.quantity = quantity;
+        this.subCategory = subCategory;
     }
 }

@@ -23,7 +23,7 @@
         <!--        <img th:src="@{../../images/}" alt="">-->
     </div>
     <div>
-        <h3>Vlad Martsenuk</h3>
+        <h3 th:text="${user.name + ' ' + user.surName}"></h3>
     </div>
 </header>
 
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <a href="#" class="nav__link">
+        <a href="/logout" class="nav__link">
             <i class='bx bx-log-out nav__icon'></i>
             <span class="nav__name">Выйти</span>
         </a>

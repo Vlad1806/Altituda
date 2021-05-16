@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.vlad.altituda.JDBC.Registration;
 import ru.vlad.altituda.Model.Producer;
 import ru.vlad.altituda.dao.ProducerDAO;
 
@@ -20,42 +21,27 @@ public class ProducerController {
         this.producerDAO = producerDAO;
     }
 
-    @GetMapping("/subCategories")
-    public String subCategories(){
-        return "/subCategories";
-    }
-    @GetMapping("/categories")
-    public String categories(){
-        return "/categories";
-    }
-    @GetMapping("/users")
-    public String users(){
-        return "/users";
-    }
-    @GetMapping("/order")
-    public String order(){
-        return "/order";
-    }
-    @GetMapping("/product")
-    public String product(){
-        return "/product";
-    }
-
     @GetMapping()
     public String index(Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("producer", producerDAO.index());
+        model.addAttribute("user",Registration.getUsers());
         return "producer/listProducer";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("producer", producerDAO.show(id));
+        model.addAttribute("user",Registration.getUsers());
         return "redirect:/producer";
     }
 
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("producer") Producer producer){
+    public String newPerson(@ModelAttribute("producer") Producer producer,Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         return "producer/new";
     }
 
@@ -72,6 +58,8 @@ public class ProducerController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         model.addAttribute("producer", producerDAO.show(id));
         return "producer/edit";
     }
@@ -79,6 +67,7 @@ public class ProducerController {
     @PostMapping ("/{id}")
     public String update(@ModelAttribute("producer") @Valid Producer producer,BindingResult bindingResult,
                          @PathVariable("id")int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         if (bindingResult.hasErrors()){
             return "producer/edit";
         }
@@ -89,6 +78,7 @@ public class ProducerController {
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         producerDAO.delete(id);
         return "redirect:/producer";
     }

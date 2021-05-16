@@ -3,10 +3,12 @@ package ru.vlad.altituda.config;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import ru.vlad.altituda.controllers.HomeController;
 
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 public class MySpringMvcDispatcherServletInititializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override

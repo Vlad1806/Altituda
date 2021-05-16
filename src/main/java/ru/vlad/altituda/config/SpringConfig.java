@@ -6,11 +6,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import ru.vlad.altituda.JDBC.DbSource;
+
+import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("ru.vlad.altituda")
@@ -66,5 +70,17 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setContentType("text/html; charset=UTF-8");
         registry.viewResolver(resolver);
     }
+
+//    @Bean
+//    public DataSource createDataSource() {
+//        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+//        dataSource.setDriver(DbSource);
+//        dataSource.setDriverClassName(driver);
+//        dataSource.setUrl(url);
+//        dataSource.setUsername(username);
+//        dataSource.setPassword(password);
+//        return dataSource;
+//    }
+
 }
 

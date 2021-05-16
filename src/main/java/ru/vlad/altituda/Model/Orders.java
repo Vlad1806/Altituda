@@ -4,9 +4,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -15,6 +17,7 @@ public class Orders {
     private int id;
     private int product;
     private int quantity;
+
     private String receiving;
     private Timestamp timeOrder;
 

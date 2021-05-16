@@ -23,7 +23,7 @@
         <!--        <img th:src="@{../../images/}" alt="">-->
     </div>
     <div>
-        <h3>Vlad Martsenuk</h3>
+        <h3 th:text="${user.name + ' ' + user.surName}"></h3>
     </div>
 </header>
 
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <a href="#" class="nav__link">
+        <a href="/logout" class="nav__link">
             <i class='bx bx-log-out nav__icon'></i>
             <span class="nav__name">Выйти</span>
         </a>
@@ -87,32 +87,39 @@
 
         <form class="form__edit" method="POST" th:action="@{/users/{email}(email=${users.getEmail()})}" th:object="${users}" th:accept-charset="utf-8">
             <div class="row">
-                <!--                <div class="form-group col-md-8">-->
-                <!--                    <label for="email" class="col-form-label">Почта</label>-->
-                <!--                    <input type="text" th:field="*{email}" class="form-control"-->
-                <!--                           id="email" placeholder="First Name" />-->
-                <!--                    <div style="color: #ff0000; font-size: 10px;font-style: italic;"-->
-                <!--                         th:if="${#fields.hasErrors('email')}"-->
-                <!--                         th:errors="*{email}">Name Error</div>-->
-                <!--                </div>-->
+<!--                                <div class="form-group col-md-8">-->
+<!--                                    <label for="email" class="col-form-label">Почта</label>-->
+<!--                                    <input type="text" th:field="*{email}" class="form-control"-->
+<!--                                           id="email" placeholder="First Name" />-->
+<!--                                    <div style="color: #ff0000; font-size: 10px;font-style: italic;"-->
+<!--                                         th:if="${#fields.hasErrors('email')}"-->
+<!--                                         th:errors="*{email}">Name Error</div>-->
+<!--                                </div>-->
+<!--                <div class="form-group col-md-8">-->
+<!--                    <label for="email" class="col-form-label">Почта</label>-->
+<!--                    <input type="text" th:field="*{email}" class="form-control"-->
+<!--                           id="email" placeholder="Почта" />-->
+<!--                    <div style="color: #ff0000; font-size: 10px;font-style: italic;"-->
+<!--                         th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
+<!--                </div>-->
                 <div class="form-group col-md-8">
                     <label for="name" class="col-form-label">Имя</label>
                     <input type="text" th:field="*{name}" class="form-control"
-                           id="name" placeholder="Last Name" />
+                           id="name" placeholder="Имя" />
                     <div style="color: #ff0000; font-size: 10px;font-style: italic;"
                          th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="surname" class="col-form-label">Фамилия</label>
                     <input  type="text" th:field="*{surName}" class="form-control"
-                            id="surname" placeholder="Last Name" />
+                            id="surname" placeholder="Фамилия" />
                     <div style="color: #ff0000; font-size: 10px;font-style: italic;"
                          th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}">Name Error</div>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="password" class="col-form-label ">Пароль</label>
                     <input  type="text" th:field="*{password}" class="form-control big__height"
-                            id="password" placeholder="Last Name" />
+                            id="password" placeholder="Пароль" />
 
                     <div style="color: #ff0000; font-size: 10px;font-style: italic;"
                          th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>

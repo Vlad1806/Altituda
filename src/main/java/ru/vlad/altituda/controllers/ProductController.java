@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.vlad.altituda.JDBC.Registration;
 import ru.vlad.altituda.Model.Producer;
 import ru.vlad.altituda.Model.Product;
 import ru.vlad.altituda.Model.SubCategories;
@@ -25,58 +26,44 @@ public class ProductController {
     }
 
 
-    @GetMapping("/subCategories")
-    public String subCategories(){
-        return "/subCategories";
-    }
-    @GetMapping("/categories")
-    public String categories(){
-        return "/categories";
-    }
-    @GetMapping("/users")
-    public String users(){
-        return "/users";
-    }
-    @GetMapping("/order")
-    public String order(){
-        return "/order";
-    }
-    @GetMapping("/producer")
-    public String producer(){
-        return "/producer";
-    }
-
-
     @GetMapping()
     public String index(Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("product", productDAO.index());
+        model.addAttribute("user",Registration.getUsers());
         return "product/listProduct";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("product", productDAO.show(id));
+        model.addAttribute("user",Registration.getUsers());
         return "redirect:/product";
     }
 
 
     @GetMapping("/new")
     public String newPerson(Model model ,@ModelAttribute("product") Product product){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         List<SubCategories> sub = productDAO.allSubCategories();
         List<Producer> producer = productDAO.allProducer();
         model.addAttribute("producer",producer);
         model.addAttribute("subCategories",sub);
+        model.addAttribute("user",Registration.getUsers());
         return "product/new";
     }
 
     @PostMapping()
     public String create(Model model ,@ModelAttribute("product") @Valid Product product,
                          BindingResult bindingResult){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         if (bindingResult.hasErrors()){
                 List<SubCategories> sub = productDAO.allSubCategories();
     List<Producer> producer = productDAO.allProducer();
         model.addAttribute("producer",producer);
         model.addAttribute("subCategories",sub);
+            model.addAttribute("user",Registration.getUsers());
             return "product/new";
         }
         productDAO.save(product);
@@ -85,17 +72,20 @@ public class ProductController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         List<SubCategories> sub = productDAO.allSubCategories();
         List<Producer> producer = productDAO.allProducer();
         model.addAttribute("producer",producer);
         model.addAttribute("subCategories",sub);
         model.addAttribute("product", productDAO.show(id));
+        model.addAttribute("user",Registration.getUsers());
         return "product/edit";
     }
 
     @PostMapping ("/{id}")
     public String update(@ModelAttribute("product") @Valid Product product,BindingResult bindingResult,
                          @PathVariable("id")int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         if (bindingResult.hasErrors()){
             return "product/edit";
         }
@@ -106,6 +96,7 @@ public class ProductController {
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         productDAO.delete(id);
         return "redirect:/product";
     }

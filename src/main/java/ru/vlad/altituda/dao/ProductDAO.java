@@ -57,11 +57,6 @@ public class ProductDAO {
         return products;
     }
 
-    private String description(Map map){
-        return null;
-    }
-
-
     public Product show(int id){
         Product product = new Product();
         try {
@@ -70,14 +65,9 @@ public class ProductDAO {
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                String description = resultSet.getString("description");
-//                description = description.replaceAll("\\{","");
-//                description = description.replaceAll("\\}","");
-//                System.out.println(description);
-//                JsonObject jsonObject = new JsonParser().parse(description).getAsJsonObject();
                 product.setId(resultSet.getInt("id_product"));
                 product.setSubcategories(resultSet.getInt("subcategories_id"));
-                product.setDescription(description);
+                product.setDescription(resultSet.getString("description"));
                 product.setQuantity(resultSet.getInt("quantity"));
                 product.setProducer(resultSet.getInt("producer"));
                 product.setPhoto(resultSet.getString("photo"));
@@ -88,7 +78,6 @@ public class ProductDAO {
         }
         return product;
     }
-
     public void save(Product product) {
         String query = "INSERT INTO product " +
                 " (subcategories_id, description, quantity, producer, photo, price) " +
@@ -189,8 +178,8 @@ public class ProductDAO {
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
     }
 
@@ -239,8 +228,6 @@ public class ProductDAO {
     }
 
     public List<Product> bySubCategory( int category,int sub){
-
-
         List<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM product " +
         "join subcategories s on product.subcategories_id = s.id_subcategory " +
@@ -253,6 +240,7 @@ public class ProductDAO {
             while (resultSet.next()){
                 Product product = new Product();
                 String description = resultSet.getString("description");
+                int cc = 0;
                 Gson gson = new Gson();
                 HashMap<String,Object> map = gson.fromJson(description, HashMap.class);
 //                List<String> list = new ArrayList<String>(Collections.singleton(map.values().toString()));
@@ -292,5 +280,23 @@ public class ProductDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public String  getProduct(int id){
+        String sub ="";
+        String sql = "SELECT name_ FROM product p " +
+                "join subcategories s on p.subcategories_id = s.id_subcategory " +
+                "WHERE id_product = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                sub= resultSet.getString("name_");
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return sub;
     }
 }

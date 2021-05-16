@@ -37,7 +37,7 @@
 
                 <div class="nav__logo">
                     <img src="../../../images/logo.svg" alt="logo">
-                    <a href="/" class="scroll-link">
+                    <a href="/home" class="scroll-link">
                         Альтитуда
                     </a>
                 </div>
@@ -68,17 +68,17 @@
                 </div>
 
                 <div class="nav__icons">
-                    <a href="./login.html" class="icon__item">
+                    <a href="/login" class="icon__item">
                         <svg class="icon__user">
                             <use xlink:href="../../../images/sprite.svg#icon-user"></use>
                         </svg>
                     </a>
 
-                    <a href="#" class="icon__item">
+                    <a href="/shoppingCart" class="icon__item">
                         <svg class="icon__cart">
                             <use xlink:href="../../../images/sprite.svg#icon-shopping-basket"></use>
                         </svg>
-                        <span id="cart__total">0</span>
+<!--                        <span id="cart__total">0</span>-->
                     </a>
                 </div>
             </nav>
@@ -104,7 +104,7 @@
 </header>
 
 <div id="main">
-    <section class="section cart__area" th:with="var = ${0}">
+    <section class="section cart__area">
         <div class="container">
             <div class="responsive__cart-area">
                 <form class="cart__form" method="POST" action="/shoppingCart/order" >
@@ -120,22 +120,21 @@
                             </tr>
                             </thead>
                             <tbody class="tbody__scroll">
-                            <tr th:each="item : ${session.shoppingCart}">
+                            <tr th:each="item: ${session.shoppingCart}">
                                 <td class="product__thumbnail">
-<!--                                th:width="${var + item.product.price * item.quantity}-->
                                     <a href="#">
                                         <img th:src="${'../../images/' + item.product.photo}" alt="">
                                     </a>
                                 </td>
                                 <td class="product__name">
-                                    <a href="#" th:text="Фанера">Фанера</a>
+                                    <a href="#" th:text="${item.subCategory}">Фанера</a>
                                     <br><br>
                                     <small th:text="${item.product.description}">1525х1250х4мм</small>
                                 </td>
                                 <td class="product__price">
-                                    <div class="price">
+<!--                                    <div class="price">-->
                                         <span class="new__price" th:text="${item.product.price + ' грн'}">250 грн</span>
-                                    </div>
+<!--                                    </div>-->
                                 </td>
                                 <td class="product__quantity">
                                     <div class="input-counter">
@@ -174,7 +173,7 @@
                             </li>
                             <li>
                                 Итог
-                                <span class="new__price" th:text="${var} + ' грн'">250 грн</span>
+                                <span class="new__price" th:text="${session.total} + ' грн'">250 грн</span>
                             </li>
                         </ul>
                         <input type="submit" />
@@ -232,36 +231,13 @@
 <footer id="footer" class="section footer">
     <div class="container">
         <div class="footer__top">
-            <!-- <div class="footer-top__box">
-              <h3>EXTRAS</h3>
-              <a href="#">Brands</a>
-              <a href="#">Gift Certificates</a>
-              <a href="#">Affiliate</a>
-              <a href="#">Specials</a>
-              <a href="#">Site Map</a>
-            </div>
-            <div class="footer-top__box">
-              <h3>INFORMATION</h3>
-              <a href="#">About Us</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms & Conditions</a>
-              <a href="#">Contact Us</a>
-              <a href="#">Site Map</a>
-            </div>
-            <div class="footer-top__box">
-              <h3>MY ACCOUNT</h3>
-              <a href="#">My Account</a>
-              <a href="#">Order History</a>
-              <a href="#">Wish List</a>
-              <a href="#">Newsletter</a>
-              <a href="#">Returns</a>
-            </div> -->
+
             <div class="footer-top__box">
                 <h3>КОНТАКТЫ</h3>
                 <div>
             <span>
               <svg>
-                <use xlink:href="../../../images/sprite.svg#icon-location"></use>
+                <use xlink:href="../../images/sprite.svg#icon-location"></use>
               </svg>
             </span>
                     Княжеская 42, Украина
@@ -269,23 +245,23 @@
                 <div>
             <span>
               <svg>
-                <use xlink:href="../../../images/sprite.svg#icon-envelop"></use>
+                <use xlink:href="../../images/sprite.svg#icon-envelop"></use>
               </svg>
             </span>
-                    company@gmail.com
+                    <a href="mailto:company@gmail.com">company@gmail.com</a>
                 </div>
                 <div>
             <span>
               <svg>
-                <use xlink:href="../../../images/sprite.svg#icon-phone"></use>
+                <use xlink:href="../../images/sprite.svg#icon-phone"></use>
               </svg>
             </span>
-                    456-456-4512
+                    <a href="tel:+4564564512">456-456-4512</a>
                 </div>
                 <div>
             <span>
               <svg>
-                <use xlink:href="../../../images/sprite.svg#icon-paperplane"></use>
+                <use xlink:href="../../images/sprite.svg#icon-paperplane"></use>
               </svg>
             </span>
                     Одесса, Украина

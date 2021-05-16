@@ -1,5 +1,6 @@
 package ru.vlad.altituda.dao;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Component;
 import ru.vlad.altituda.Model.Users;
@@ -62,9 +63,11 @@ public class UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 user.setEmail(resultSet.getString("email"));
+                String password = resultSet.getString("password_");
+                password = base64ApacheDecode(password);//////
                 user.setName(resultSet.getString("name_"));
                 user.setSurName(resultSet.getString("surname"));
-                user.setPassword(resultSet.getString("password_"));
+                user.setPassword(password);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -79,7 +82,7 @@ public class UserDAO {
             preparedStatement.setString(1,user.getEmail());
             preparedStatement.setString(2,user.getName());
             preparedStatement.setString(3,user.getSurName());
-            preparedStatement.setString(4,md5Apache(user.getPassword()));
+            preparedStatement.setString(4,base64ApacheEncode(user.getPassword()));
 
             preparedStatement.executeUpdate();
 
@@ -93,17 +96,24 @@ public class UserDAO {
                     "UPDATE users SET name_=?,surname=?,password_= ? WHERE email = ?");
             preparedStatement.setString(1, users.getName());
             preparedStatement.setString(2, users.getSurName());
-            preparedStatement.setString(3, users.getPassword());
+            String pass = base64ApacheEncode(users.getPassword());
+            preparedStatement.setString(3, pass);
             preparedStatement.setString(4,email);
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-    private static String md5Apache(String st) {
-        String md5Hex = DigestUtils.md5Hex(st);
+    public String base64ApacheEncode(String st) {
+        Base64 base64 = new Base64();
+        String encodedString = new String(base64.encode(st.getBytes()));
+        return encodedString;
+    }
 
-        return md5Hex;
+    public   String base64ApacheDecode(String st) {
+        Base64 base64 = new Base64();
+        String decodedString = new String(base64.decode(st.getBytes()));
+        return decodedString;
     }
 
     public void delete(String email){

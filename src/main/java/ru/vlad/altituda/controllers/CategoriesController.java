@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.vlad.altituda.JDBC.Registration;
 import ru.vlad.altituda.Model.Categories;
 import ru.vlad.altituda.dao.CategoriesDAO;
 
@@ -23,41 +24,23 @@ public class CategoriesController {
 
     @GetMapping()
     public String index(Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("categories", categoriesDAO.index());
+        model.addAttribute("user",Registration.getUsers());
         return "categories/listCategories";
     }
-
-
-    @GetMapping("/subCategories")
-    public String subCategories(){
-        return "/subCategories";
-    }
-    @GetMapping("/users")
-    public String users(){
-        return "/users";
-    }
-    @GetMapping("/order")
-    public String order(){
-        return "/order";
-    }
-    @GetMapping("/product")
-    public String product(){
-        return "/product";
-    }
-    @GetMapping("/producer")
-    public String producer(){
-        return "/producer";
-    }
-
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         model.addAttribute("categories", categoriesDAO.show(id));
+        model.addAttribute("user",Registration.getUsers());
         return "redirect:/categories";
     }
 
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("categories") Categories categories){
+    public String newPerson(@ModelAttribute("categories") Categories categories,Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         return "categories/new";
     }
 
@@ -74,6 +57,8 @@ public class CategoriesController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         model.addAttribute("categories", categoriesDAO.show(id));
         return "categories/edit";
     }
@@ -81,6 +66,7 @@ public class CategoriesController {
     @PostMapping ("/{id}")
     public String update(@ModelAttribute("categories") @Valid Categories categories,BindingResult bindingResult,
                          @PathVariable("id")int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         if (bindingResult.hasErrors()){
             return "categories/edit";
         }
@@ -91,6 +77,7 @@ public class CategoriesController {
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         categoriesDAO.delete(id);
         return "redirect:/categories";
     }

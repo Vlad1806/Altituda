@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.vlad.altituda.JDBC.Registration;
 import ru.vlad.altituda.Model.Orders;
 import ru.vlad.altituda.dao.OrdersDAO;
 
@@ -20,44 +21,27 @@ public class OrdersController {
         this.ordersDAO = ordersDAO;
     }
 
-
-    @GetMapping("/subCategories")
-    public String subCategories(){
-        return "/subCategories";
-    }
-    @GetMapping("/categories")
-    public String categories(){
-        return "/categories";
-    }
-    @GetMapping("/users")
-    public String users(){
-        return "/users";
-    }
-    @GetMapping("/product")
-    public String product(){
-        return "/product";
-    }
-    @GetMapping("/producer")
-    public String producer(){
-        return "/producer";
-    }
-
-
     @GetMapping()
     public String index(Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         model.addAttribute("orders", ordersDAO.index());
         return "order/listOrders";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         model.addAttribute("orders", ordersDAO.show(id));
+        model.addAttribute("user",Registration.getUsers());
         return "redirect:/order";
     }
 
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("orders") Orders orders){
+    public String newPerson(@ModelAttribute("orders") Orders orders,Model model){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         return "order/new";
     }
 
@@ -73,6 +57,8 @@ public class OrdersController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
+        model.addAttribute("user",Registration.getUsers());
         model.addAttribute("orders", ordersDAO.show(id));
         return "order/edit";
     }
@@ -80,6 +66,7 @@ public class OrdersController {
     @PostMapping ("/{id}")
     public String update(@ModelAttribute("orders") @Valid Orders orders,BindingResult bindingResult,
                          @PathVariable("id")int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         if (bindingResult.hasErrors()){
             return "order/edit";
         }
@@ -90,6 +77,7 @@ public class OrdersController {
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id){
+        if (Registration.isRegistration() != true) return "redirect:/login";
         ordersDAO.delete(id);
         return "redirect:/order";
     }

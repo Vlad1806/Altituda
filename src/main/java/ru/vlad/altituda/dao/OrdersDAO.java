@@ -101,7 +101,6 @@ public class OrdersDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "UPDATE orders SET product_id = ?, quantity=?, date_receiving =?, " +
                             "time_order=? WHERE id_order = ?");
-
             preparedStatement.setInt(1, updateOrders.getProduct());
             preparedStatement.setInt(2, updateOrders.getQuantity());
             preparedStatement.setDate(3, Date.valueOf(updateOrders.getReceiving()));

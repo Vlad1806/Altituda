@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -12,9 +13,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class Users {
-    @Email
+    @Email(message = "Некорректный e-mail")
     @NotEmpty
-    @Size(max = 100,message = "Это поле не должно превышать 100 символов")
     private String email;
     @NotEmpty
     @Size(max = 50,message = "Это поле не должно превышать 50 символов")
@@ -23,6 +23,7 @@ public class Users {
     @Size(max = 50,message = "Это поле не должно превышать 50 символов")
     private String surName;
 
+    @Size(min = 8, max = 15, message = "Пароль должнен быть не меньше 8 и не больше 15 символов")
     private String password;
 
     public Users(String email, String name, String surName, String password) {
