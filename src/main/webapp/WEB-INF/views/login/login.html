@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="../../../css/login.css">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Аутентификация</title>
+</head>
+<body>
+<div class="l-form">
+    <div class="shape1"></div>
+    <div class="shape2"></div>
+
+    <div class="form">
+        <img src="./images/authentication.svg" alt="" class="form__img">
+
+        <form th:action="@{/login}" method="post" class="form__content" id="form" th:object="${user}">
+            <h1 class="form__title">Добро пожаловать</h1>
+
+            <div class="form__div form__div-one" id="form__email">
+                <div class="form__icon">
+                    <i class='bx bx-user-circle'></i>
+                </div>
+
+                <div class="form__div-input" id="inputbox">
+                    <input type="text" class="form__input" id="email" name="email"
+                           placeholder="E-mail" onkeyup="validate()">
+                    <span class="text" id="text"></span>
+                </div>
+            </div>
+
+            <div class="form__div" id="form__password">
+                <div class="form__icon">
+                    <i class='bx bx-lock'></i>
+                </div>
+
+                <div class="form__div-input">
+                    <input type="password" class="form__input" id="password" name="password"
+                           placeholder="Пароль" onkeyup="validate()">
+                    <span class="text" id="text2"></span>
+                </div>
+
+            </div>
+            <br>
+            <div style="color: #ff0000; font-size: 14px;font-style: italic;"
+                 th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
+            <div style="color: #ff0000; font-size: 14px;font-style: italic;"
+                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+<!--            <a href="./adminUser.html" class="form__forgot">Забыли пароль?</a>-->
+
+            <input type="submit" class="form__button" value="Login">
+        </form>
+    </div>
+
+</div>
+
+<!-- ===== MAIN JS ===== -->
+<script src="../../../js/login.js"></script>
+</body>
+</html>
